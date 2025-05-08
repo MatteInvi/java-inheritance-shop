@@ -2,6 +2,8 @@ package org.lessons.java.shop;
 
 import java.util.Random;
 
+import org.lessons.java.shop.utilities.SostituienteLettere;
+
 public class Prodotto {
   protected int codice;
   protected String nome;
@@ -16,6 +18,7 @@ public class Prodotto {
     this.iva = iva;
   }
 
+  // Metodi
   public String getCodice() {
     Random randomCode = new Random();
     return randomCode.nextInt(1000000) + " ";
@@ -39,15 +42,20 @@ public class Prodotto {
   }
 
   public String leggiProdotto(){
-    return "Codice prodotto: " + getCodice() + "Nome prodotto: " + getNome() + "Marca prodotto: " + getMarca()
-    + "Prezzo prodotto: " + getPrezzo() + "Percentuale iva: " + getIva() ; 
+    return this.trasmormaInSlashed("Codice prodotto: " + getCodice() + "Nome prodotto: " + getNome() + "Marca prodotto: " + getMarca()
+    + "Prezzo prodotto: " + getPrezzo() + "Percentuale iva: " + getIva());
+  }
+// Prova poco sensata per esercitarsi
+  public String trasmormaInSlashed(String frase ){
+    SostituienteLettere sostUtility = new SostituienteLettere();
+    return sostUtility.sostituisciConCarattereScelto(frase, ' ', '/');
   }
 
 
 
 
-  
-  
+
+
 }
 
 

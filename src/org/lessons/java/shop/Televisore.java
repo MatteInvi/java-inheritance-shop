@@ -2,6 +2,7 @@ package org.lessons.java.shop;
 public class Televisore extends Prodotto {
   protected float pollici;
   protected boolean smart;
+  String rispostaSmart;
 
   public Televisore(float pollici, boolean smart, String nome, String marca, float prezzo, float iva) {
     this.pollici = pollici;
@@ -12,10 +13,20 @@ public class Televisore extends Prodotto {
   public String getPollici(){
     return this.pollici + " ";
   }
+  
  
   public String getSmart(){
-     return this.smart + " ";
+    if (this.smart == true){
+      rispostaSmart = "SI";
+   } else {
+     rispostaSmart = "NO";
+   }
+
+      return rispostaSmart + " ";
   }
+    
+  
+
 
   
 
