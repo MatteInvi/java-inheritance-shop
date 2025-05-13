@@ -7,7 +7,7 @@ public class Cuffia extends Prodotto {
      public Cuffia(String colore, String tipoConnessione, String nome, String marca, float prezzo, float iva) {
           this.colore = colore;
           this.tipoConnessione = tipoConnessione;
-          super(nome, marca, prezzo, iva);
+          super( nome, marca, prezzo, iva);
      }
 
      public String getColore(){
@@ -17,8 +17,8 @@ public class Cuffia extends Prodotto {
      public String getTipoConnessione(){
           return this.tipoConnessione + " ";
      }
-
-     public String leggiCuffia(){
-          return "Colore: " + getColore() + "Tipo connessione: " + getTipoConnessione() + leggiProdotto();
+     @Override
+     public String toString(){
+          return super.toString() + "Colore: " + getColore() + "Tipo connessione: " + getTipoConnessione();
      }
 }

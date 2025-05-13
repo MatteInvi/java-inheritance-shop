@@ -2,12 +2,12 @@ package org.lessons.java.shop;
 public class Televisore extends Prodotto {
   protected float pollici;
   protected boolean smart;
-  String rispostaSmart;
+  public String rispostaSmart;
 
   public Televisore(float pollici, boolean smart, String nome, String marca, float prezzo, float iva) {
     this.pollici = pollici;
     this.smart = smart;
-    super(nome, marca, prezzo, iva);
+    super( nome, marca, prezzo, iva);
   }
 
   public String getPollici(){
@@ -15,22 +15,22 @@ public class Televisore extends Prodotto {
   }
   
  
+
   public String getSmart(){
-    if (this.smart == true){
-      rispostaSmart = "SI";
+        if (this.smart == true){
+      this.rispostaSmart = "SI";
    } else {
-     rispostaSmart = "NO";
+      this.rispostaSmart = "NO";
    }
 
-      return rispostaSmart + " ";
+   return rispostaSmart;
   }
-    
   
 
 
   
-
-  public String leggiTelevisore(){
-    return "Pollici televisore: " + getPollici() + "E' smart? " + getSmart() + leggiProdotto();
+@Override
+  public String toString(){
+    return super.toString() + "Pollici televisore: " + getPollici() + "E' smart? " + getSmart();
   }
 }

@@ -2,8 +2,6 @@ package org.lessons.java.shop;
 
 import java.util.Random;
 
-import org.lessons.java.shop.utilities.SostituienteLettere;
-
 public class Prodotto {
   protected int codice;
   protected String nome;
@@ -12,16 +10,29 @@ public class Prodotto {
   protected float iva;
 
   public Prodotto(String nome, String marca, float prezzo, float iva) {
+    Random random = new Random();    
+    this.codice = random.nextInt(1, 99999999);
     this.nome = nome;
     this.marca = marca;
     this.prezzo = prezzo;
     this.iva = iva;
+
   }
 
   // Metodi
-  public String getCodice() {
-    Random randomCode = new Random();
-    return randomCode.nextInt(1000000) + " ";
+   public static String PAD_LEFT(int codice){
+    String stringCode = String.valueOf(codice);
+    int lunghezza = stringCode.length();
+    int zeriDaAggiuntere = 8 - lunghezza;
+    String zeriDaInserire = "";;
+    for (int i = 0; i < zeriDaAggiuntere; i++){
+      zeriDaInserire += "0";
+    }
+    return (zeriDaInserire.concat(stringCode));
+
+   }
+  public int getCodice() {
+    return this.codice;
   }
 
   public String getPrezzo() {
@@ -29,33 +40,27 @@ public class Prodotto {
     return formattedPrice + "€ ";
   }
 
-  public String getNome(){
-   return this.nome + " ";
+  public String getNome() {
+    return this.nome + " ";
   }
 
-  public String getMarca(){
+  public String getMarca() {
     return this.marca + " ";
   }
 
-  public String getIva(){
+  public String getIva() {
     return this.iva + "% ";
   }
 
-  public String leggiProdotto(){
-    return this.trasmormaInSlashed("Codice prodotto: " + getCodice() + "Nome prodotto: " + getNome() + "Marca prodotto: " + getMarca()
-    + "Prezzo prodotto: " + getPrezzo() + "Percentuale iva: " + getIva());
+  @Override
+  public String toString() {
+    return ("Codice prodotto: " + getCodice() + " Nome prodotto: " + getNome() + " Marca prodotto: " + getMarca()
+        + " Prezzo prodotto: " + getPrezzo() + " Percentuale iva: " + getIva());
   }
-// Prova poco sensata per esercitarsi
-  public String trasmormaInSlashed(String frase ){
-    SostituienteLettere sostUtility = new SostituienteLettere();
-    return sostUtility.sostituisciConCarattereScelto(frase, ' ', '/');
-  }
-
-
-
-
-
+  // Prova poco sensata per esercitarsi
+  // public String trasmormaInSlashed(String frase ){
+  // SostituienteLettere sostUtility = new SostituienteLettere();
+  // return sostUtility.sostituisciConCarattereScelto(frase, ' ', '/');
+  // }
 
 }
-
-
