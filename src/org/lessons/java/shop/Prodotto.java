@@ -3,15 +3,16 @@ package org.lessons.java.shop;
 import java.util.Random;
 
 public class Prodotto {
-  protected int codice;
+  protected String codice;
   protected String nome;
   protected String marca;
   protected float prezzo;
   protected float iva;
+  Random random = new Random();    
+  int codiceRandom = random.nextInt(1, 9999);
 
   public Prodotto(String nome, String marca, float prezzo, float iva) {
-    Random random = new Random();    
-    this.codice = random.nextInt(1, 99999999);
+    this.codice = PAD_LEFT(codiceRandom);
     this.nome = nome;
     this.marca = marca;
     this.prezzo = prezzo;
@@ -31,7 +32,7 @@ public class Prodotto {
     return (zeriDaInserire.concat(stringCode));
 
    }
-  public int getCodice() {
+  public String getCodice() {
     return this.codice;
   }
 
